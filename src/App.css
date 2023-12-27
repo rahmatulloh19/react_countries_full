@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "Nunito Sans";
+	font-display: swap;
+	font-weight: 300;
+	src:
+		url("../src/fonts/nunitosanslight.woff2") format("woff2"),
+		url("../src/fonts/nunitosanslight.woff") format("woff");
+}
+@font-face {
+	font-family: "Nunito Sans";
+	font-display: swap;
+	font-weight: 400;
+	src:
+		url("../src/fonts/nunitosansregular.woff2") format("woff2"),
+		url("../src/fonts/nunitosansregular.woff") format("woff");
+}
+@font-face {
+	font-family: "Nunito Sans";
+	font-display: swap;
+	font-weight: 600;
+	src:
+		url("../src/fonts/nunitosanssemibold.woff2") format("woff2"),
+		url("../src/fonts/nunitosanssemibold.woff") format("woff");
+}
+@font-face {
+	font-family: "Nunito Sans";
+	font-display: swap;
+	font-weight: 700;
+	src:
+		url("../src/fonts/nunitosansbold.woff2") format("woff2"),
+		url("../src/fonts/nunitosansbold.woff") format("woff");
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	font-family: "Nunito Sans", "Arial", sans-serif;
+	background-color: #fafafa;
+}
+
+.dark #root {
+	background-color: #202c36;
+}
+
+#root {
+	height: 100%;
+}
+
+img {
+	display: block;
+	height: auto;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+.container {
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* Sticky footer */
+
+.site-main {
+	flex-grow: 1;
+}
+
+.box-shadow {
+	box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+}
+
+.site-header__mode::before {
+	width: 20px;
+	height: 20px;
+	background-image: url("./images/moon.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	content: "";
+}
+
+.dark .site-header__mode::before {
+	background-image: url("./images/darkmoon.svg");
+}
+
+.search__btn {
+	background-image: url("./images/magnify.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.dark .search__btn {
+	background-image: url("./images/darkmagnify.svg");
+}
+
+.search__select {
+	background-image: url("./images/arrow.svg");
+	background-repeat: no-repeat;
+	background-position: center right 19px;
+}
+
+.dark .search__select {
+	background-image: url("./images/darkarrow.svg");
+}
