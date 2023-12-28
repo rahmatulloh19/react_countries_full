@@ -36,7 +36,7 @@ function List({ inputValue, selectValue }) {
 		<section className="site-main__list list">
 			<div className="container">
 				{Array.isArray(Data) ? (
-					<ul className="list__list grid justify-between flex-wrap min-[651px]:grid-cols-2 min-[990px]:grid-cols-3 min-[1329px]:grid-cols-4 gap-75px">
+					<ul className="list__list grid justify-center flex-wrap min-[651px]:grid-cols-2 min-[990px]:grid-cols-3 min-[1329px]:grid-cols-4 gap-75px">
 						{Data.map((item, index) => {
 							return <Item {...item} key={index} />;
 						})}

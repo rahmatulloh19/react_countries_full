@@ -1,7 +1,1 @@
-<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 2">
-<g id="expand-more">
-<path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M7.875 2.875L5 5.75L2.125 2.875L1.25 3.75L5 7.5L8.75 3.75L7.875 2.875Z" fill="black"/>
-</g>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none"><path fill="#000" fill-rule="evenodd" d="M7.875 2.875 5 5.75 2.125 2.875l-.875.875L5 7.5l3.75-3.75-.875-.875Z" clip-rule="evenodd"/></svg>
