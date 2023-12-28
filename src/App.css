@@ -119,3 +119,7 @@ img {
 .dark .search__select {
 	background-image: url("./images/darkarrow.svg");
 }
+
+.list__items {
+	grid-template-rows: 160px, 1fr;
+}
