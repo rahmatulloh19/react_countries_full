@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { regions } from "../../CONSTANTS";
 
-function Search({ inputValue, inputValueState }) {
-	const inputRef = useRef();
+function Search({ inputValueState, selectValueState }) {
+	const inputRef = useRef(null);
+	const selectRef = useRef(null);
 
 	return (
 		<section className="site-main__search search pt-6 pb-8 md:py-12">
@@ -22,7 +23,12 @@ function Search({ inputValue, inputValueState }) {
 							/>
 						</label>
 
-						<select className="search__select py-0.875 pl-6 pr-5 appearance-none text-text-onLight bg-bg-items dark:bg-bg-onDark dark:text-text-onDark rounded-5 max-w-[200px] w-full outline-none box-shadow">
+						<select
+							className="search__select py-0.875 pl-6 pr-5 appearance-none text-text-onLight bg-bg-items dark:bg-bg-onDark dark:text-text-onDark rounded-5 max-w-[200px] w-full outline-none box-shadow"
+							ref={selectRef}
+							onChange={() => {
+								selectValueState(selectRef.current.value);
+							}}>
 							<option value={false} disabled selected>
 								Filter by Region
 							</option>

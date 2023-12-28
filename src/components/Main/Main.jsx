@@ -4,11 +4,12 @@ import { useState } from "react";
 
 function Main() {
 	const [inputValue, inputValueState] = useState("all");
+	const [selectValue, selectValueState] = useState("");
 
 	return (
 		<main className="site-main">
-			<Search inputValue={inputValue} inputValueState={inputValueState} />
-			<List data={inputValue} />
+			<Search inputValueState={inputValueState} selectValueState={selectValueState} />
+			<List inputValue={inputValue} selectValue={selectValue} />
 		</main>
 	);
 }
