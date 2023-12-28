@@ -16,6 +16,7 @@ export default {
 			spacing: {
 				0.875: "14px",
 				7.5: "30px",
+				"75px": "75px",
 			},
 			screens: {
 				sm: "375px",
@@ -28,15 +29,13 @@ export default {
 			},
 			container: {
 				center: true,
-				padding: {
-					default: "20px",
-				},
+				padding: "24px",
 				screens: {
-					default: "1320px",
+					default: "1329px",
 				},
 			},
 		},
 	},
 	darkMode: "class",
-	plugins: [],
+	plugins: ["prettier-plugin-tailwindcss"],
 };

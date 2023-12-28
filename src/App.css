@@ -56,7 +56,9 @@ body {
 }
 
 #root {
-	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 img {
@@ -73,13 +75,6 @@ img {
 	border: 0;
 	overflow: hidden;
 	clip: rect(0 0 0 0);
-}
-
-.container {
-	max-width: 1280px;
-	width: 100%;
-	margin: 0 auto;
-	padding: 0 24px;
 }
 
 /* Sticky footer */
