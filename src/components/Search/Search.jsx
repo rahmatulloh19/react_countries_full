@@ -29,7 +29,7 @@ function Search({ inputValueState, selectValueState }) {
 							onChange={() => {
 								selectValueState(selectRef.current.value);
 							}}>
-							<option value={false} disabled selected>
+							<option value={false} hidden>
 								Filter by Region
 							</option>
 							{regions.map((item, index) => {

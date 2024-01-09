@@ -1,6 +1,10 @@
 function Item({ flags, name, population, region, capital }) {
 	return (
-		<li className="list__items grid bg-bg-items box-shadow rounded-5 dark:bg-bg-onDark">
+		<li
+			className="list__items grid bg-bg-items box-shadow rounded-5 dark:bg-bg-onDark"
+			onClick={() => {
+				console.log("bosildi");
+			}}>
 			<img
 				className="w-full rounded-t-5 h-[160px] object-fill"
 				src={flags.png}

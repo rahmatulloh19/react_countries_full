@@ -10,6 +10,7 @@
 		url("../src/fonts/nunitosanslight.woff2") format("woff2"),
 		url("../src/fonts/nunitosanslight.woff") format("woff");
 }
+
 @font-face {
 	font-family: "Nunito Sans";
 	font-display: swap;
@@ -18,6 +19,7 @@
 		url("../src/fonts/nunitosansregular.woff2") format("woff2"),
 		url("../src/fonts/nunitosansregular.woff") format("woff");
 }
+
 @font-face {
 	font-family: "Nunito Sans";
 	font-display: swap;
@@ -26,6 +28,7 @@
 		url("../src/fonts/nunitosanssemibold.woff2") format("woff2"),
 		url("../src/fonts/nunitosanssemibold.woff") format("woff");
 }
+
 @font-face {
 	font-family: "Nunito Sans";
 	font-display: swap;
@@ -122,4 +125,20 @@ img {
 
 .list__items {
 	grid-template-rows: 160px, 1fr;
+}
+
+.single-btn {
+	background-image: url("./images/back.svg");
+	background-repeat: no-repeat;
+	background-position: center left 24px;
+}
+
+@media only screen and (min-width: 768px) {
+	.single-btn {
+		background-position: center left 32px;
+	}
+}
+
+.dark .single-btn {
+	background-image: url("./images/darkback.svg");
 }

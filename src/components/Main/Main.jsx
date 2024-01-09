@@ -7,10 +7,10 @@ function Main() {
 	const [selectValue, selectValueState] = useState("");
 
 	return (
-		<main className="site-main">
+		<>
 			<Search inputValueState={inputValueState} selectValueState={selectValueState} />
 			<List inputValue={inputValue} selectValue={selectValue} />
-		</main>
+		</>
 	);
 }
 

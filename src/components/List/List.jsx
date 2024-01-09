@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Item from "../Item/Item";
-import { regions } from "../../CONSTANTS";
 
 function List({ inputValue, selectValue }) {
 	let [Data, SetData] = useState();
