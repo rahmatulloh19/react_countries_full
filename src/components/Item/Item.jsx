@@ -1,9 +1,12 @@
-function Item({ flags, name, population, region, capital }) {
+import { useNavigate } from "react-router-dom";
+
+function Item({ flags, name, population, region, capital, path }) {
+	const navigate = useNavigate();
 	return (
 		<li
 			className="list__items grid bg-bg-items box-shadow rounded-5 dark:bg-bg-onDark"
 			onClick={() => {
-				console.log("bosildi");
+				navigate(`/country/${path}`);
 			}}>
 			<img
 				className="w-full rounded-t-5 h-[160px] object-fill"

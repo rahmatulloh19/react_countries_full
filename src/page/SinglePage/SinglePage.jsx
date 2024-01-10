@@ -1,50 +1,88 @@
-import img from "../../images/flag.svg";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+// let collector = [];
+localStorage.setItem("border", JSON.stringify([]));
 
 export const SinglePage = ({ inputValue, selectValue }) => {
-	console.log(inputValue, selectValue);
+	const { cca2 } = useParams();
+	const [country, setCountry] = useState({});
+	const [borders, setBorders] = useState([]);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		fetch(`https://restcountries.com/v3.1/alpha/${cca2}`)
+			.then((res) => res.json())
+			.then((data) => {
+				setCountry(data[0]);
+			});
+
+		// country?.borders?.reduce((acc, item) => {
+		// 	fetch(`https://restcountries.com/v3.1/alpha/${item}`)
+		// 		.then((res) => res.json())
+		// 		.then((data) => {
+		// 			return acc.push(data);
+		// 		}, []);
+		// });
+	}, [cca2]);
 	return (
 		<section className="site-main__single single text-text-onLight dark:text-text-onDark py-10">
 			<div className="container">
-				<button className="single-btn min-w-[104px] md:min-w-[134px] bg-bg-items dark:bg-bg-onDark box-shadow text-sm font-light py-1.5 pr-6 text-end md:pl-10 md:text-center rounded-md md:py-4 md:text-base leading-5 mb-16 md:mb-20">
+				<button
+					className="single-btn min-w-[104px] md:min-w-[134px] bg-bg-items dark:bg-bg-onDark box-shadow text-sm font-light py-1.5 pr-6 text-end md:pl-10 md:text-center rounded-md md:py-4 md:text-base leading-5 mb-16 md:mb-20"
+					onClick={() => {
+						navigate("/");
+					}}>
 					Back
 				</button>
-				<div className="single__info flex flex-col md:flex-row md:justify-between md:gap-x-10">
+				<div className="single__info flex flex-col md:flex-row  flex-wrap md:justify-between md:gap-x-10">
 					<img
-						className="single__info-img object-cover md:max-w-[560px] grow rounded-md mb-11 md:mb-0 md:max-h-[401px]"
-						src={img}
-						alt=""
+						className="single__info-img object-contain md:max-w-[560px] rounded-md mb-11 md:mb-0 md:max-h-[401px]"
+						src={country.flags?.svg}
+						alt={`${country.name?.common}'s flag`}
 					/>
 					<div className="single__inner md:max-w-[574px] grow">
 						<h2 className="font-extrabold text-[22px] md:text-[32px] mb-4 md:mb-6 leading-snug">
-							Belgium
+							{country.name?.common}
 						</h2>
 						<div className="single__main-info text-sm leading-8 md:text-base md:leading-8 md:flex md:justify-between md:gap-x-6 mb-[34px]">
 							<div className="single__location mb-8">
 								<p className="single__location-desc">
-									<strong className="single__bold">Native Name:</strong> België
+									<strong className="single__bold">Native Name:</strong>
+									{country.name?.nativeName &&
+										" " + Object.values(country.name?.nativeName).at(-1)?.common}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Population:</strong> 11,319,511
+									<strong className="single__bold">Population:</strong>
+									{" " + country?.population}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Region:</strong> Europe
+									<strong className="single__bold">Region:</strong> {" " + country?.region}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Sub Region:</strong> Western Europe
+									<strong className="single__bold">Sub Region:</strong> {" " + country?.subregion}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Capital:</strong> Brussels
+									<strong className="single__bold">Capital:</strong>
+									{" " + country?.capital?.at(0)}
 								</p>
 							</div>
 							<div className="single__international">
 								<p className="single__international-desc">
-									<strong className="single__bold">Top Level Domain:</strong> .be
+									<strong className="single__bold">Top Level Domain:</strong>
+									{" " + country?.tld?.at(0)}
 								</p>
 								<p className="single__international-desc">
-									<strong className="single__bold">Currencies:</strong> Euro
+									<strong className="single__bold">Currencies:</strong>
+									{country?.currencies && " " + Object.values(country?.currencies).at(-1)?.symbol}
 								</p>
 								<p className="single__international-desc">
-									<strong className="single__bold">Languages:</strong> Dutch, French, German
+									<strong className="single__bold">Languages:</strong>
+									{country?.languages &&
+										" " +
+											Object.values(country?.languages).reduce((acc, item) => {
+												return acc + item + ", ";
+											}, "")}
 								</p>
 							</div>
 						</div>
@@ -53,21 +91,15 @@ export const SinglePage = ({ inputValue, selectValue }) => {
 								Border Countries:
 							</h3>
 							<div className="single__border-inner flex gap-[10px] flex-wrap text-center">
-								<button
-									className="min-w-[96px] py-1.5 rounded-sm box-shadow text-xs md:text-sm bg-bg-items dark:bg-bg-onDark"
-									type="button">
-									France
-								</button>
-								<button
-									className="min-w-[96px] py-1.5 rounded-sm box-shadow text-xs md:text-sm bg-bg-items dark:bg-bg-onDark"
-									type="button">
-									Germany
-								</button>
-								<button
-									className="min-w-[96px] py-1.5 rounded-sm box-shadow text-xs md:text-sm bg-bg-items dark:bg-bg-onDark"
-									type="button">
-									Netherlands
-								</button>
+								{country?.borders?.map((item) => (
+									<Link
+										className="min-w-[96px] py-1.5 rounded-sm box-shadow text-xs md:text-sm bg-bg-items dark:bg-bg-onDark"
+										type="button"
+										key={item}
+										to={`/country/${item}`}>
+										{item}
+									</Link>
+								))}
 							</div>
 						</div>
 					</div>

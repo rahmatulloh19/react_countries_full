@@ -36,8 +36,18 @@ function List({ inputValue, selectValue }) {
 			<div className="container">
 				{Array.isArray(Data) ? (
 					<ul className="list__list grid justify-center flex-wrap min-[651px]:grid-cols-2 min-[990px]:grid-cols-3 min-[1329px]:grid-cols-4 gap-75px">
-						{Data.map((item, index) => {
-							return <Item {...item} key={index} />;
+						{Data.map((item) => {
+							return (
+								<Item
+									flags={item.flags}
+									name={item.name}
+									population={item.opulation}
+									region={item.region}
+									capital={item.capital}
+									path={item.cca2}
+									key={item.cca2}
+								/>
+							);
 						})}
 					</ul>
 				) : (

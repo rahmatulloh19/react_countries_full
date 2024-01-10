@@ -27,7 +27,7 @@ function App() {
 					/>
 					<Route
 						element={<SinglePage inputValue={inputValue} selectValue={selectValue} />}
-						path={`/${selectValue || inputValue}`}
+						path={`/country/:cca2`}
 					/>
 				</Routes>
 			</main>
