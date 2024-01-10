@@ -41,7 +41,7 @@ function List({ inputValue, selectValue }) {
 								<Item
 									flags={item.flags}
 									name={item.name}
-									population={item.opulation}
+									population={item.population}
 									region={item.region}
 									capital={item.capital}
 									path={item.cca2}
