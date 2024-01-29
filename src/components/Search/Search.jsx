@@ -1,7 +1,15 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { regions } from "../../CONSTANTS";
+import { inputContext } from "../../context/inputContext";
+import { selectContext } from "../../context/selectContext";
+import { useTranslation } from "react-i18next";
 
-function Search({ inputValueState, selectValueState }) {
+function Search() {
+	const { t } = useTranslation();
+
+	const { inputValueState } = useContext(inputContext);
+	const { selectValueState } = useContext(selectContext);
+
 	const inputRef = useRef(null);
 	const selectRef = useRef(null);
 
@@ -19,7 +27,7 @@ function Search({ inputValueState, selectValueState }) {
 									inputValueState(inputRef.current.value.trim());
 								}}
 								ref={inputRef}
-								placeholder="Search for a country..."
+								placeholder={t("search.inputHolder")}
 							/>
 						</label>
 
@@ -29,13 +37,10 @@ function Search({ inputValueState, selectValueState }) {
 							onChange={() => {
 								selectValueState(selectRef.current.value);
 							}}>
-							<option value={false} hidden>
-								Filter by Region
-							</option>
 							{regions.map((item, index) => {
 								return (
 									<option key={index} value={item.value} id={item.id}>
-										{item.text}
+										{t(item.text)}
 									</option>
 								);
 							})}

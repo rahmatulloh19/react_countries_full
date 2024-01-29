@@ -1,13 +1,14 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-// let collector = [];
 localStorage.setItem("border", JSON.stringify([]));
 
-export const SinglePage = ({ inputValue, selectValue }) => {
+export const SinglePage = () => {
+	const { t } = useTranslation();
+
 	const { cca2 } = useParams();
 	const [country, setCountry] = useState({});
-	const [borders, setBorders] = useState([]);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -16,14 +17,6 @@ export const SinglePage = ({ inputValue, selectValue }) => {
 			.then((data) => {
 				setCountry(data[0]);
 			});
-
-		// country?.borders?.reduce((acc, item) => {
-		// 	fetch(`https://restcountries.com/v3.1/alpha/${item}`)
-		// 		.then((res) => res.json())
-		// 		.then((data) => {
-		// 			return acc.push(data);
-		// 		}, []);
-		// });
 	}, [cca2]);
 	return (
 		<section className="site-main__single single text-text-onLight dark:text-text-onDark py-10">
@@ -33,7 +26,7 @@ export const SinglePage = ({ inputValue, selectValue }) => {
 					onClick={() => {
 						navigate("/");
 					}}>
-					Back
+					{t("singlePage.backBtn")}
 				</button>
 				<div className="single__info flex flex-col md:flex-row  flex-wrap md:justify-between md:gap-x-10">
 					<img
@@ -48,47 +41,45 @@ export const SinglePage = ({ inputValue, selectValue }) => {
 						<div className="single__main-info text-sm leading-8 md:text-base md:leading-8 md:flex md:justify-between md:gap-x-6 mb-[34px]">
 							<div className="single__location mb-8">
 								<p className="single__location-desc">
-									<strong className="single__bold">Native Name:</strong>
+									<strong className="single__bold">{t("singlePage.nativeName")}:</strong>
 									{country.name?.nativeName &&
 										" " + Object.values(country.name?.nativeName).at(-1)?.common}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Population:</strong>
+									<strong className="single__bold">{t("singlePage.population")}:</strong>
 									{" " + country?.population}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Region:</strong> {" " + country?.region}
+									<strong className="single__bold">{t("singlePage.region")}:</strong>{" "}
+									{" " + country?.region}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Sub Region:</strong> {" " + country?.subregion}
+									<strong className="single__bold">{t("singlePage.subRegion")}:</strong>{" "}
+									{" " + country?.subregion}
 								</p>
 								<p className="single__location-desc">
-									<strong className="single__bold">Capital:</strong>
+									<strong className="single__bold"> {t("singlePage.capital")}:</strong>
 									{" " + country?.capital?.at(0)}
 								</p>
 							</div>
 							<div className="single__international">
 								<p className="single__international-desc">
-									<strong className="single__bold">Top Level Domain:</strong>
+									<strong className="single__bold"> {t("singlePage.domain")}:</strong>
 									{" " + country?.tld?.at(0)}
 								</p>
 								<p className="single__international-desc">
-									<strong className="single__bold">Currencies:</strong>
+									<strong className="single__bold"> {t("singlePage.currencies")}:</strong>
 									{country?.currencies && " " + Object.values(country?.currencies).at(-1)?.symbol}
 								</p>
 								<p className="single__international-desc">
-									<strong className="single__bold">Languages:</strong>
-									{country?.languages &&
-										" " +
-											Object.values(country?.languages).reduce((acc, item) => {
-												return acc + item + ", ";
-											}, "")}
+									<strong className="single__bold"> {t("singlePage.languages")}:</strong>
+									{country?.languages && " " + Object.values(country?.languages).join(", ")}
 								</p>
 							</div>
 						</div>
 						<div className="single__border md:flex md:items-center">
 							<h3 className="single__border-title font-semibold mb-4 md:mr-4 md:mb-0">
-								Border Countries:
+								{t("singlePage.border")}:
 							</h3>
 							<div className="single__border-inner flex gap-[10px] flex-wrap text-center">
 								{country?.borders?.map((item) => (

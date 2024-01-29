@@ -1,27 +1,32 @@
 export const regions = [
 	{
+		id: 0,
+		text: "search.select1",
+		value: "all",
+	},
+	{
 		id: 1,
-		text: "Africa",
+		text: "search.select2",
 		value: "africa",
 	},
 	{
 		id: 2,
-		text: "America",
+		text: "search.select3",
 		value: "america",
 	},
 	{
 		id: 3,
-		text: "Asia",
+		text: "search.select4",
 		value: "asia",
 	},
 	{
 		id: 4,
-		text: "Europe",
+		text: "search.select5",
 		value: "europe",
 	},
 	{
 		id: 5,
-		text: "Oceania",
+		text: "search.select6",
 		value: "oceania",
 	},
 ];

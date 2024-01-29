@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Item from "../Item/Item";
+import { inputContext } from "../../context/inputContext";
+import { selectContext } from "../../context/selectContext";
+import { useTranslation } from "react-i18next";
 
-function List({ inputValue, selectValue }) {
+function List() {
+	const { t } = useTranslation();
+
 	let [Data, SetData] = useState();
+
+	const { inputValue } = useContext(inputContext);
+	const { selectValue } = useContext(selectContext);
 
 	useEffect(() => {
 		if (inputValue === "all" || inputValue === "") {
@@ -22,8 +30,14 @@ function List({ inputValue, selectValue }) {
 	}, [inputValue]);
 
 	useEffect(() => {
-		if (selectValue) {
+		if (selectValue && selectValue !== "all") {
 			fetch(`https://restcountries.com/v3.1/region/${selectValue}`)
+				.then((res) => res.json())
+				.then((countries) => {
+					SetData(countries);
+				});
+		} else if (selectValue === "all") {
+			fetch(`https://restcountries.com/v3.1/all`)
 				.then((res) => res.json())
 				.then((countries) => {
 					SetData(countries);
@@ -52,7 +66,7 @@ function List({ inputValue, selectValue }) {
 					</ul>
 				) : (
 					<h3 className="text-center text-2xl mt-10 text-text-onLight dark:text-text-onDark">
-						Nothing is found
+						{t("list")}
 					</h3>
 				)}
 			</div>

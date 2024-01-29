@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 function Item({ flags, name, population, region, capital, path }) {
+	const { t } = useTranslation();
+
 	const navigate = useNavigate();
 	return (
 		<li
@@ -17,18 +20,18 @@ function Item({ flags, name, population, region, capital, path }) {
 				<h3 className="text-lg mb-4 text-text-onLight dark:text-text-onDark grow">{name.common}</h3>
 				<div className="list__desc-wrapper">
 					<p className="text-sm leading-4 font-extralight mb-2 text-text-onLight dark:text-text-onDark">
-						<strong className="font-semibold">Population : </strong> {population}
+						<strong className="font-semibold">{t("item.population")}: </strong> {population}
 					</p>
 					{capital ? (
 						<p className="text-sm leading-4 font-extralight mb-2 text-text-onLight dark:text-text-onDark">
-							<strong className="font-semibold">Region : </strong>
+							<strong className="font-semibold">{t("item.region")} : </strong>
 							{capital[0]}
 						</p>
 					) : (
 						""
 					)}
 					<p className="text-sm leading-4 font-extralight text-text-onLight dark:text-text-onDark">
-						<strong className="font-semibold">Capital : </strong> {region}
+						<strong className="font-semibold">{t("item.region")} : </strong> {region}
 					</p>
 				</div>
 			</div>
